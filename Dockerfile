@@ -9,7 +9,7 @@ RUN apk add --no-cache --virtual ripes-build-dependencies \
    
 
 ENV RIPES_REVISION master
-RUN git clone --depth 1 --branch ${RIPES_REVISION} git clone --recursive https://github.com/mortbopet/Ripes.git /ripes
+RUN git clone --recursive --branch ${RIPES_REVISION} https://github.com/mortbopet/Ripes.git /ripes
 
 WORKDIR /ripes/build
 
