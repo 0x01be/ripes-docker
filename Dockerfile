@@ -18,5 +18,4 @@ RUN cmake \
     -DCMAKE_INSTALL_PREFIX=/opt/ripes \
     ..
 RUN make
-RUN make install
 
