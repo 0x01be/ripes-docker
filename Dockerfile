@@ -7,7 +7,8 @@ COPY --from=build /opt/ripes/ /opt/ripes/
 USER root
 RUN apk add --no-cache --virtual ripes-runtime-dependencies \
     qt5-qtbase \
-    qt5-qtcharts
+    qt5-qtcharts \
+    qt5-qtsvg
    
 USER xpra
 
