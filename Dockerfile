@@ -1,21 +1,17 @@
-FROM alpine
+FROM 0x01be/ripes:build as build
 
-RUN apk add --no-cache --virtual ripes-build-dependencies \
-    git \
-    build-base \
-    cmake \
-    qt5-qtbase-dev \
-    qt5-qtcharts-dev
+FROM 0x01be/xpra
+
+COPY --from=build /opt/ripes/ /opt/ripes/
+
+USER root
+RUN apk add --no-cache --virtual ripes-runtime-dependencies \
+    qt5-qtbase \
+    qt5-qtcharts
    
+USER xpra
 
-ENV RIPES_REVISION master
-RUN git clone --depth 1 --branch ${RIPES_REVISION} git clone --recursive https://github.com/mortbopet/Ripes.git /ripes
+ENV PATH ${PATH}:/opt/ripes/bin/
 
-WORKDIR /ripes/build
-
-RUN cmake \
-    -DCMAKE_INSTALL_PREFIX=/opt/ripes \
-    ..
-RUN make
-RUN make install
+ENV COMMAND ripes
 
