@@ -5,7 +5,8 @@ RUN apk add --no-cache --virtual ripes-build-dependencies \
     build-base \
     cmake \
     qt5-qtbase-dev \
-    qt5-qtcharts-dev
+    qt5-qtcharts-dev \
+    qt5-qtsvg-dev
    
 
 ENV RIPES_REVISION master
